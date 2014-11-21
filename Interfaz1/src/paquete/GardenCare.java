@@ -1,45 +1,52 @@
 package paquete;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Insets;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import java.awt.GridLayout;
-
-import javax.swing.AbstractButton;
-import javax.swing.JOptionPane;
-import javax.swing.JToolBar;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.BoxLayout;
-import javax.swing.JList;
-import javax.swing.border.BevelBorder;
-
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JProgressBar;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JSlider;
-import javax.swing.SwingConstants;
+import javax.swing.JToolBar;
+import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 
 public class GardenCare extends JFrame {
-
+	
+	
 	private JPanel contentPane;
 	private JPanel panel1;
 	private String hierbaDir = "Iconos/hierba-footer.png"; 
+	private JList list;
+	private JLabel lblNewLabel_4;
+	private JSlider slider;
 	//private JOptionPane frame;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		//cambiar el decorado de la ventana
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			} catch (Exception e) {
+			System.out.println("Error setting native LAF: " + e);
+			}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -61,7 +68,7 @@ public class GardenCare extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(4, 1, 0, 0));
+		contentPane.setLayout(new GridLayout(5, 1, 0, 0));
 		
 		panel1 = new JPanel();
 		contentPane.add(panel1);
@@ -93,12 +100,16 @@ public class GardenCare extends JFrame {
 		panel2.add(panel2_1);
 		panel2_1.setLayout(new GridLayout(1, 0, 0, 0));
 		String [] datos = {"Weather","Petrol","Milk"};
-		JList list = new JList(datos);
+		list = new JList(datos);
 		list.setBackground(Color.GRAY);
 		list.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel2_1.add(list);
 		
 		JButton btnNewButton = new JButton("");
+		btnNewButton.setToolTipText("GO?");
+		btnNewButton.setMnemonic('W');
+		btnNewButton.setRolloverIcon(new ImageIcon(GardenCare.class.getResource("/Iconos/Digital.png")));
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panel2.add(btnNewButton);
 		
 		//me creo oun escuchador para lanzar un evento
@@ -111,8 +122,23 @@ public class GardenCare extends JFrame {
 			int answer = JOptionPane.showConfirmDialog(frame, message);
 			 if (answer == JOptionPane.YES_OPTION) {
 			 // User clicked YES. 
+				 //List string es para coger un array de texto
+				 //el list es mi lista de elementos y con el getSelectedValuesList coges cada valor del array.
+				 List<String> values = list.getSelectedValuesList();
+				 StringBuilder sb = new StringBuilder();
+				 sb.append("Dropping... ");
+				 for (String value : values) {
+				 sb.append(value);
+				 sb.append(" ");
+				 }
+				 sb.append("at ");
+				 sb.append(slider.getValue());
+				 sb.append("%");
+				 lblNewLabel_4.setText(sb.toString());
+				 
 			 } else if (answer == JOptionPane.NO_OPTION) {
 			 // User clicked NO.
+	
 		}
 		}
 		});
@@ -124,15 +150,17 @@ public class GardenCare extends JFrame {
 		contentPane.add(panel3);
 		panel3.setLayout(new BoxLayout(panel3, BoxLayout.X_AXIS));
 		
-		JSlider slider = new JSlider(JSlider.HORIZONTAL);
+		slider = new JSlider(JSlider.HORIZONTAL);
 		panel3.add(slider);
 		slider.setValue(25);
 		slider.setToolTipText("Indicador");
 		
-		/*
-		 *Llamo a la clase IMGPanel para redimensionar la imagen 
-		 *Me creo una variable global arriba a la que le paso la imagen que la llamo hierbaDir
-		 */ 
+		JPanel panel = new JPanel();
+		contentPane.add(panel);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		lblNewLabel_4 = new JLabel("Dropping...");
+		panel.add(lblNewLabel_4);
 		JPanel panel4 = new ImgPanel(hierbaDir);
 		contentPane.add(panel4);
 		
