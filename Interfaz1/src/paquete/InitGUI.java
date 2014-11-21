@@ -169,8 +169,8 @@ public class InitGUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//llamo a mi metodo y uso los gettes y settes para rellenar PanelTexto y txtarea
-				PanelTexto.setText(elementoSelecionado()+ "\n" + txtrAr.getText());
+		//llamo a mi metodo y uso los gettes y settes para rellenar PanelTexto y txtarea
+		PanelTexto.setText(elementoSelecionado()+ "\n" + txtrAr.getText());
 			
 				
 			}

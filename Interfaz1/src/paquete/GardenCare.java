@@ -33,6 +33,7 @@ public class GardenCare extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel panel1;
+	private String hierbaDir = "Iconos/hierba-footer.png"; 
 	//private JOptionPane frame;
 
 	/**
@@ -121,32 +122,21 @@ public class GardenCare extends JFrame {
 		
 		JPanel panel3 = new JPanel();
 		contentPane.add(panel3);
+		panel3.setLayout(new BoxLayout(panel3, BoxLayout.X_AXIS));
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.GRAY);
-		panel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		panel3.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
-		
-		JSlider slider = new JSlider();
-		slider.setToolTipText("Indicador");
-		slider.setSnapToTicks(true);
-		slider.setPaintTicks(true);
-		slider.setPaintLabels(true);
-		panel.add(slider);
+		JSlider slider = new JSlider(JSlider.HORIZONTAL);
+		panel3.add(slider);
 		slider.setValue(25);
+		slider.setToolTipText("Indicador");
 		
-		JPanel panel4 = new JPanel();
+		/*
+		 *Llamo a la clase IMGPanel para redimensionar la imagen 
+		 *Me creo una variable global arriba a la que le paso la imagen que la llamo hierbaDir
+		 */ 
+		JPanel panel4 = new ImgPanel(hierbaDir);
 		contentPane.add(panel4);
 		
-		JPanel panel_1 = new JPanel();
-		panel4.add(panel_1);
-		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
 		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		lblNewLabel_4.setIcon(new ImageIcon(GardenCare.class.getResource("/Iconos/hierba-footer.png")));
-		panel_1.add(lblNewLabel_4);
 	}
 
 }
