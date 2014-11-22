@@ -1,45 +1,37 @@
 package ut01.act07;
 
 public interface InterfazFicheroBicicleta {
-
-	/*
-	 * Obtener una bicicleta
-	 * @param: bici
-	 * @return: Devuelve verdadero si lo ha eliminado 
-	 * 
+	
+	/**
+	 * Almacena un objeto bicicleta 
+	 * @param bici
+	 * @return devuelve verdadero si se ha guardado con éxito
 	 */
+	public boolean guardarBici(Bicicleta bici);
 	
-	public Bicicleta ObtenerBici(int id);
-	
-	
-	/*
-	 * modifica una bicicleta
-	 * @param: bici
-	 * @return: Devuelve verdadero si lo ha eliminado 
-	 * 
+	/**
+	 * Busca una bicicleta
+	 * @param bici Objeto con un id de la bicicleta
+	 * @return Devuelve un objeto Bicicleta, si no la encuentra
+	 * devolverá un objeto Bicicleta vacio
 	 */
+	public Bicicleta obtenerBici(Bicicleta bici);
 	
-	
-	public boolean guardaBici(Bicicleta bici);
-	
-	
-	/*
-	 * modifica una bicicleta
-	 * @param: bici
-	 * @return: Devuelve verdadero si lo ha eliminado 
-	 * 
+	/**
+	 * Modifica una bicicleta
+	 * @param bici Busca por id la bicicleta
+	 * @return Devuelve verdadero si ha modificado con éxito
 	 */
 	public boolean modificarBici(Bicicleta bici);
 	
-	 
-	 
-	/*
-	 * Elimina una bicicleta
-	 * @param: bici
-	 * @return: Devuelve verdadero si lo ha eliminado 
-	 * 
+	/**
+	 * Elimina una bicicleta 
+	 * @param bici
+	 * @return Devueve verdadero si lo ha eliminado con éxito
 	 */
-	 
-	 public boolean eliminarBici(Bicicleta bici);
-		
+	public boolean eliminarBici(Bicicleta bici);
+	
+	
+
+
 }
