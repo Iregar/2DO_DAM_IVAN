@@ -1,42 +1,55 @@
 package examen2013;
 
-public class Bar {
+import java.io.Serializable;
 
-	private String name ;
-	private String address;
-	private String tipo  ;
+public class Bar implements Serializable{
+
 	
-	Bar(){
-		 name ="null";
-		 address = "null";
-		 tipo = "null";
+
+	private String name, address, type;
+
+	public Bar (){
+		
+		String name= null;
+		String address= null;
+		String type= null;
 		
 	}
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	public Bar(String name, String address, String tipo) {
+	public Bar(String name, String address, String type) {
 		super();
 		this.name = name;
 		this.address = address;
-		this.tipo = tipo;
+		this.type = type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
+	@Override
+	public String toString() {
+		return "Bar [name=" + name + ", address=" + address + ", type=" + type
+				+ "]";
+	}
 	
 }
