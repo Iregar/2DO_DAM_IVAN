@@ -43,6 +43,7 @@ public class Ejercicio5 {
 				fw.write(alineacion);
 				fw.write(";");}
 			}
+			fw.write("\n");
 		} catch (IOException e) {
 			System.err.println(ERROR_IO);
 

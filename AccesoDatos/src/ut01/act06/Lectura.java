@@ -14,7 +14,7 @@ public class Lectura
 		{          
 			// Apertura del fichero y creacion de BufferedReader para poder
 			// hacer una lectura comoda (disponer del metodo readLine()).
-			archivo = new File ("C:\\archivo.txt");
+			archivo = new File ("C:\\Temp\\archivo.txt");
 			lector = new FileReader (archivo);
 			leyendo = new BufferedReader(lector);
 			// Lectura del fichero
