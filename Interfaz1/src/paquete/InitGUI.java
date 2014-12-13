@@ -36,6 +36,7 @@ public class InitGUI extends JFrame {
 	JCheckBox Gafas,barbita,tupe,cuello;
 	
 	JTextArea txtrAr;
+	private JPanel panel;
 	
 	
 	
@@ -117,7 +118,7 @@ public class InitGUI extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Paste");
 		mnNewMenu_1.add(mntmNewMenuItem_1);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(2, 2, 0, 0));
 		
